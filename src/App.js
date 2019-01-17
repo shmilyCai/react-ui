@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import './App.scss';
+import { Layout, Icon } from 'antd';
+
+import Nav from './section/nav/nav';
+// import  Header from './section/header/header';
+import Content from './section/content/content';
+
+const { Header, Sider } = Layout;
 
 class App extends Component {
+
+  state = {
+    collapsed: false,
+  };
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Layout>
+        <Sider trigger={true} collapsible collapsed={this.state.collapsed}>
+          <Nav></Nav>
+        </Sider>
+        <Layout>
+          <Header className="header">
+            <Icon className="trigger" type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'} onClick={this.toggle} />
+            </Header>
+          <Content></Content>
+        </Layout>
+      </Layout>
     );
   }
 }
