@@ -25,9 +25,8 @@ const menus = [
 ];
 
 
-
 // 配置需要mock的路由
-FetchMock.sandbox().mock('/api', {results: menus});
+FetchMock.get('/api', {results: [{'test':22323}]});
 FetchMock.once('/path/to/api2', Mock.mock(test));
 FetchMock.once('/path/to/api3', Mock.mock(test));
 FetchMock.once('/path/to/api4', Mock.mock(test));

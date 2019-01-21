@@ -1,3 +1,5 @@
+import { stringify } from "querystring";
+
 const url = '/api';
 
 
@@ -23,7 +25,7 @@ export  function fetchAction(param) {
         // 执行异步操作
         fetch(url)
             .then(response => {
-                console.log(response);
+                console.log(response.json);
                 return response.json;
             })
             // 请求成功调用成功的同步 Action
