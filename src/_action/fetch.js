@@ -1,4 +1,4 @@
-const url = 'https://douban.uieee.com/v2';
+const url = '/api';
 
 
 // 异步请求成功会用到的同步 action 创建函数
@@ -22,7 +22,10 @@ export  function fetchAction(param) {
     return (dispatch, state) => {
         // 执行异步操作
         fetch(url)
-            .then(response => response.json)
+            .then(response => {
+                console.log(response);
+                return response.json;
+            })
             // 请求成功调用成功的同步 Action
             .then(json => dispatch(actionSuccess(actionSuccess)))
             .catch(error => dispatch(actionError()))
