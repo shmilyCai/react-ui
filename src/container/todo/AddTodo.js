@@ -2,8 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { addTodo } from '../../_action/index'
 
+
 const AddTodo = ({ dispatch }) => {
   let input
+
+  
 
   return (
     <div>
